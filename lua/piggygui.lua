@@ -178,4 +178,4 @@ function startGui()
 	F_FLYSCRIPT()
 end
 
-return startGui()
+startGui()
