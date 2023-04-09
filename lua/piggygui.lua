@@ -13,7 +13,6 @@ function F_FLYSCRIPT()
 
 	local speed = 100
 
-	--//Toggle Flying
 	local flying = false
 	local function ToggleFlying()
 		if flyEnabled == true then
@@ -55,17 +54,12 @@ function F_FLYSCRIPT()
 	end)
 end
 
-function startGui()
-	F_FLYSCRIPT()
-end
-
-return startGui()
-
 -- Gui to Lua
 -- Version: 3.2
 
 -- Instances:
 
+local gui = Instance.new("ScreenGui")
 local topbar = Instance.new("Frame")
 local frame = Instance.new("Frame")
 local UICorner = Instance.new("UICorner")
@@ -75,8 +69,11 @@ local reopen = Instance.new("TextButton")
 
 --Properties:
 
+gui.ResetOnSpawn = false
+gui.Parent = game.Players.LocalPlayer.PlayerGui
+
 topbar.Name = "topbar"
-topbar.Parent = game.StarterGui["km7piggy"]
+topbar.Parent = gui
 topbar.AnchorPoint = Vector2.new(0.5, 0.5)
 topbar.BackgroundColor3 = Color3.fromRGB(62, 62, 70)
 topbar.Position = UDim2.new(0.5, 0, 0, -450)
@@ -176,3 +173,9 @@ local function DBGTEGR_fake_script() -- topbar.LocalScript
 	db = true
 end
 coroutine.wrap(DBGTEGR_fake_script)()
+
+function startGui()
+	F_FLYSCRIPT()
+end
+
+return startGui()
